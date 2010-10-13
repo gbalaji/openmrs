@@ -172,4 +172,13 @@ public interface EncounterDAO {
 	 * @see EncounterService#getAllEncounters(Cohort)
 	 */
 	public Map<Integer, List<Encounter>> getAllEncounters(Cohort patients);
+	
+	/**
+	 * 
+	 * @param formId
+	 * @param locationId
+	 * @return List<Encounter>
+	 */
+	public List<Encounter> getEncounters(Form form,
+			Location location);
 }
