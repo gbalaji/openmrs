@@ -549,11 +549,20 @@ public class EncounterServiceImpl extends BaseOpenmrsService implements Encounte
 	public Map<Integer, List<Encounter>> getAllEncounters(Cohort patients) {
 		return dao.getAllEncounters(patients);
 	}
-
+	
+	/**
+	 * @see org.openmrs.api.EncounterService#getEncounters(org.openmrs.Form, org.openmrs.Location)
+	 */
 	@Override
-	public List<Encounter> getEncounters(Form form,
-			Location location) {
-		// TODO Auto-generated method stub
+	public List<Encounter> getEncounters(Form form, Location location) {
 		return dao.getEncounters(form, location);
+	}
+	
+	/**
+	 * @see org.openmrs.api.EncounterService#getEncounters(org.openmrs.Form)
+	 */
+	@Override
+	public List<Encounter> getEncounters(Form form) {
+		return dao.getEncounters(form, null);	
 	}
 }

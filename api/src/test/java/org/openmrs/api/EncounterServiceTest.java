@@ -1417,9 +1417,12 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		Assert.assertEquals(3, allEncounters.get(7).size());
 	}
 	
+	/**
+	 * @see {@link EncounterService#getEncounters(Form, Location))}
+	 */
 	@Test
-	@Verifies(value = "should get all the encounter with the given form and location id", method = "getEncountersByFormIdAndLocationId")
-	public void getEncounters_shouldGetAllTheEncountersForTheGivenFormAndLocation()
+	@Verifies(value = "should get all the encounter with the given form and location id", method = "getEncounters(Form, Location)")
+	public void getEncounters_shouldGetAllTheEncountersWithTheGivenFormAndLocationId()
 			throws Exception {
 		EncounterService encounterService = Context.getEncounterService();
 		FormService formService = Context.getFormService();
@@ -1429,7 +1432,11 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		assertEquals(5, encounters.size());
 	}
 	
+	/**
+	 * @see {@link EncounterService#getEncounters(Form, Location))}
+	 */
 	@Test
+	@Verifies(value = "should get all encounters for given form and location ordered by encountered date desc", method = "getEncounters(Form, Location)")
 	public void getEncounters_shouldGetAllEncountersForGivenFormAndLocationOrderedByEncounteredDateDesc()
 			throws Exception {
 		EncounterService encounterService = Context.getEncounterService();
@@ -1442,4 +1449,19 @@ public class EncounterServiceTest extends BaseContextSensitiveTest {
 		}
 		
 	}	
+	
+	/**
+	 * @see {@link EncounterService#getEncounters(FormS))}
+	 */
+	@Test
+	@Verifies(value = "should get all the encounter with the given form", method = "getEncounters(Form)")
+	public void getEncounters_shouldGetAllTheEncountersWithTheGivenForm()
+			throws Exception {
+		EncounterService encounterService = Context.getEncounterService();
+		FormService formService = Context.getFormService();
+		
+		List<Encounter> encounters = encounterService.getEncounters(formService.getForm(1));
+		assertEquals(6, encounters.size());
+	}
+	
 }
